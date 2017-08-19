@@ -1,0 +1,47 @@
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-title>Create Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="registerForm" class="regiser-form">
+    <ion-item class="username-input">
+      <ion-label stacked>Username</ion-label>
+      <ion-label stacked>
+        <error-messages [control]="registerForm.controls.username"></error-messages>
+      </ion-label>
+      <ion-input formControlName="username" type="text" required></ion-input>
+    </ion-item>
+    <ion-item class="email-input">
+      <ion-label stacked>Email</ion-label>
+      <ion-label stacked>
+        <error-messages [control]="registerForm.controls.email"></error-messages>
+      </ion-label>
+      <ion-input formControlName="email" type="email" required></ion-input>
+    </ion-item>
+    <ion-item class="password-input">
+      <ion-label stacked>Password</ion-label>
+      <ion-label stacked>
+        <error-messages [control]="registerForm.controls.password"></error-messages>
+      </ion-label>
+      <ion-input formControlName="password" type="password" required></ion-input>
+    </ion-item>
+    <ion-item class="confirm-password-input">
+      <ion-label stacked>Confirm Password</ion-label>
+      <ion-label stacked>
+        <error-messages [control]="registerForm.controls.confirmPassword"></error-messages>
+      </ion-label>
+      <ion-input formControlName="confirmPassword" type="password" required></ion-input>
+    </ion-item>
+  </form>
+  <p class="submit-warning" *ngIf="!registerForm.valid">You must fill out all the fields correctly before you can create your account.</p>
+  <button [disabled]="!registerForm.valid" ion-button full icon-right color="light" class="register-button" (click)="createAccount()">Create Account
+    <ion-icon name="arrow-forward"></ion-icon>
+  </button>
+
+</ion-content>

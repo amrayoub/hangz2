@@ -47,7 +47,7 @@ export class ChatProvider {
         include_docs: true,
         descending: true
       };
-      this.dataProvider.db.query('chats/by_data_created', options).then((data) => {
+      this.dataProvider.db.query('chats/by_date_created', options).then((data) => {
         let chats = data.rows.map(row => {
           return row.doc;
         });

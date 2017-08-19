@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { NoticesProvider } from '../../providers/notices/notices';
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,13 @@ export class AddNoticePage {
   title: string = '';
   message: string = '';
   existingNotice: any = false;
+  submitAttempt: boolean = false;
 
   constructor(private navCtrl: NavController,
     private navParams: NavParams,
     private noticesProvider: NoticesProvider,
-    private viewCtrl: ViewController) {
+    private viewCtrl: ViewController,
+    private userProvider: UserProvider) {
 
   }
 
@@ -38,12 +41,14 @@ export class AddNoticePage {
         doc: this.existingNotice,
         title: this.title,
         message: this.message,
-        author: 'joshmorony',
+        author: this.userProvider.currentUser.user_id,
         dateCreated: iso,
         dateUpdated: iso
       });
+      this.submitAttempt = false;
       this.viewCtrl.dismiss();
-      
+    } else {
+      this.submitAttempt = true;
     }
 
   }

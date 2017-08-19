@@ -23,9 +23,13 @@ export class DataProvider {
 
   initRemoteSync(): void {
 
+    let oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     let options = {
       live: true,
-      retry: true
+      retry: true,
+      filter: 'app/after_date',
+      query_params: { 'afterDate': oneWeekAgo }
     };
     this.db.sync(this.remote, options);
 

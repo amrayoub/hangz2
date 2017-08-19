@@ -29,7 +29,7 @@
     <textarea spellcheck="true" autoComplete="true" autocorrect="true" rows="1" class="chat-input" [(ngModel)]="message" placeholder="type message..." (keyup.enter)="addChat()">
     </textarea>
     <ion-buttons right>
-      <button (click)="addChat()" ion-button icon-only item-right class="send-chat-button">
+      <button [disabled]="!message.length > 0" (click)="addChat()" ion-button icon-only item-right class="send-chat-button">
         <ion-icon name="send"></ion-icon>
       </button>
     </ion-buttons>

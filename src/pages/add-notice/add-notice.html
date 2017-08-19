@@ -22,7 +22,7 @@
     <ion-item class="message-input">
       <ion-textarea [(ngModel)]="message" placeholder="type your message..."></ion-textarea>
     </ion-item>
-    <button ion-button class="save-notice-button" (click)="saveNotice()">
+    <button [disabled]="!title.length > 0" ion-button class="save-notice-button" (click)="saveNotice()">
       Save Notice
     </button>
   </ion-card>

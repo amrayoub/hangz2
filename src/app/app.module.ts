@@ -10,6 +10,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { DataProvider } from '../providers/data/data';
 import { NoticesProvider } from '../providers/notices/notices';
 import { ChatProvider } from '../providers/chat/chat';
+import { UserProvider } from '../providers/user/user';
+import { AuthProvider } from '../providers/auth/auth';
+import { UsernameValidator } from '../validators/username';
+import { EmailValidator } from '../validators/email';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { ChatProvider } from '../providers/chat/chat';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
     NoticesProvider,
-    ChatProvider
+    ChatProvider,
+    UserProvider,
+    AuthProvider,
+    UsernameValidator,
+    EmailValidator
   ]
 })
 export class AppModule {}
